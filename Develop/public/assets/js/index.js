@@ -1,3 +1,6 @@
+console.log("index.js is working");
+
+
 const $noteTitle = $(".note-title");
 const $noteText = $(".note-textarea");
 const $saveNoteBtn = $(".save-note");
@@ -9,6 +12,7 @@ let activeNote = {};
 
 // A function for getting all notes from the db
 const getNotes = () => {
+  console.log("inside the get notes function");
   return $.ajax({
     url: "/api/notes",
     method: "GET",
@@ -149,3 +153,4 @@ $noteText.on("keyup", handleRenderSaveBtn);
 
 // Gets and renders the initial list of notes
 getAndRenderNotes();
+console.log("index.js is working");

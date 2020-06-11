@@ -15,10 +15,17 @@ app.listen(PORT, function () {
 console.log("log here is working");
 app.get("/notes", function (req, res) {
   res.sendFile(path.join(__dirname, "../../notes.html"));
+  console.log("notes html get request is working");
 });
 
 app.get("/api/notes", function(req, res) {
   //should read db.json and return all saved notes as JSON
+
+
+//this is working via postman, but not working on the notes.html page.  the index.js should be 
+//automatically sending a get request to /api/notes, but the below console log doesnt show up
+
+
   console.log("api notes  get request is working");
   res.json({ ok: true });
 });
