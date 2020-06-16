@@ -2,7 +2,6 @@ var express = require("express");
 var path = require("path");
 
 var app = express();
-// var db = require("../../../db/db");
 
 var PORT = process.env.PORT || 8080;
 
@@ -13,7 +12,6 @@ app.use(express.static("public"));
 app.listen(PORT, function () {
   console.log("App listening on PORT: " + PORT);
 });
-console.log("log here is working");
 app.get("/notes", function (req, res) {
   res.sendFile(path.join(__dirname, "public/notes.html"));
   console.log("notes html get request is working");
