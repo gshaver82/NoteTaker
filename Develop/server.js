@@ -58,49 +58,37 @@ app.post("/api/notes", async (req, res) => {
   }
 });
 
-app.delete("/api/notes/:id", function (req, res) {
+app.delete("/api/notes/:id", async (req, res) => {
   //Should receive a query parameter containing the id of a note to delete. 
   //This means you'll need to find a way to give each note a unique id when it's saved. 
   //In order to delete a note, you'll need to read all notes from the db.json file, 
   //remove the note with the given id property, 
   //and then rewrite the notes to the db.json file.
-  console.log("api notes post request is working");
-  res.json({ ok: true });
+  console.log("api notes delete request is working");
+  try {
+    //gets the ID from the url
+    let IDtoDelete = req.params.id;
+    // console.log(IDtoDelete);
+
+    //reads database file, then parses it and puts it in DBarray
+    let DBArray = JSON.parse(await readAsync(path.join(__dirname, "/db/db.json"), 'utf-8'));
+    //searches database array and deletes the note that has the matching ID
+    for (note of DBArray) {
+      if (note.id == IDtoDelete) {
+        DBArray.pop(note);
+      }
+    }
+    await writeAsync(path.join(__dirname, "/db/db.json"), JSON.stringify(DBArray));
+    return res.json({ ok: true });
+  } catch (err) {
+    console.log(err);
+  }
 });
-
-
-
-
 // If no matching route is found default to home
 app.get("*", function (req, res) {
   console.log("STAR get request is working");
   res.sendFile(path.join(__dirname, "../../index.html"));
 });
-
-// app.post("/api/tables", function(req, res) {
-
-//   if (tableData.length < 5) {
-//     tableData.push(req.body);
-//     res.json(true);
-//   }
-//   else {
-//     waitListData.push(req.body);
-//     res.json(false);
-//   }
-// });
-
-//api delete here----------
-
-// app.post("/api/clear", function(req, res) {
-//   // Empty out the arrays of data
-//   tableData.length = 0;
-//   waitListData.length = 0;
-
-//   res.json({ ok: true });
-// });
-
-
-
 
 app.listen(PORT, function () {
   console.log("App listening on PORT: " + PORT);
