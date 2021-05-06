@@ -6,6 +6,8 @@ this project will store notes to an external database and then read from, add to
 <img src='https://raw.githubusercontent.com/gshaver82/NoteTaker/master/NotesScreenshot.JPG' alt=screenshot width=800>
 
 
+<a href='https://gene-note-taker.herokuapp.com/'>Link to app</a>
+
 # Table of Contents
 none
 # Installation
