@@ -3,7 +3,7 @@
 this project will store notes to an external database and then read from, add to and delete from that database using APIs. also has async awaits
 
 
-<img src='https://raw.githubusercontent.com/gshaver82/NoteTaker/master/NotesScreenshot.JPG' alt=screenshot width=400>
+<img src='https://raw.githubusercontent.com/gshaver82/NoteTaker/master/NotesScreenshot.JPG' alt=screenshot width=800>
 
 
 # Table of Contents
